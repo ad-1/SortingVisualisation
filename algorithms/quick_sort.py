@@ -11,17 +11,17 @@ class QuickSort:
 
     def __init__(self, unsorted, start, end):
         self.counter = 0
-        self.quick(unsorted, start, end)
+        self.quick_sort(unsorted, start, end)
 
-    def quick(self, unsorted, start, end):
+    def quick_sort(self, unsorted, start, end):
         """ quick sort recursive algorithm """
         if start >= end:
             return
         n = len(unsorted)
         self.counter += 1
         i_pivot = self.partition(unsorted, start, end - 1)
-        self.quick(unsorted, start, i_pivot)
-        self.quick(unsorted, i_pivot + 1, n)
+        self.quick_sort(unsorted, start, i_pivot)
+        self.quick_sort(unsorted, i_pivot + 1, n)
 
     @staticmethod
     def partition(unsorted, start, end):
@@ -42,8 +42,7 @@ class QuickSort:
 
 
 if __name__ == '__main__':
-    _arr = [100, 2, 6, 1, 4, 10, 20, 3, 56, 18, 12]
-    _start, _end = 0, len(_arr)
-    quick = QuickSort(_arr, _start, _end)
-    print(_arr)
-    print(quick.counter)
+    a = [76766, 43, 56, 23, 6, 39, 34435, 8, 2]
+    s, e = 0, len(a)
+    solver = QuickSort(a, s, e)
+    print(a)

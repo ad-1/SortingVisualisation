@@ -13,12 +13,12 @@
 
 class SelectionSort:
 
-    def __init__(self, unsorted):
-        self.selection_sort(unsorted)
+    def __init__(self, unsorted, n):
+        self._selection_sort(unsorted, n)
 
     @staticmethod
     def selection_sort(unsorted):
-        """ selection sort algorithm 1 """
+        """ selection sort algorithm (unused) """
         n = len(unsorted)
         _sorted = []
         for _ in range(0, n):
@@ -28,13 +28,18 @@ class SelectionSort:
         del unsorted
 
     @staticmethod
-    def _selection_sort(arr):
-        """ selection sort algorithm 2 """
-        n = len(arr)
+    def _selection_sort(unsorted, n):
+        """ selection sort algorithm inplsace """
         for i in range(0, n):
-            min_ = min(arr[i:])
-            min_index = arr.index(min_)
-            swap = arr[i]
-            arr[i] = min_
-            arr[min_index] = swap
+            min_ = min(unsorted[i:])
+            min_index = unsorted.index(min_)
+            swap = unsorted[i]
+            unsorted[i] = min_
+            unsorted[min_index] = swap
 
+
+if __name__ == '__main__':
+    a = [76766, 43, 56, 23, 6, 39, 34435, 8, 2]
+    n = len(a)
+    solver = SelectionSort(a, n)
+    print(a)

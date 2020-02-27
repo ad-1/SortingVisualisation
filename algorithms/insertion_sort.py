@@ -11,13 +11,12 @@
 
 class InsertionSort:
 
-    def __init__(self, unsorted):
-        self.insertion(unsorted)
+    def __init__(self, unsorted, n):
+        self._insertion_sort(unsorted, n)
 
     @staticmethod
-    def insertion(arr):
+    def insertion_sort(arr, n):
         """ insertion sort algorithm 1 """
-        n = len(arr)
         for i in range(1, n):
             val = arr[i]
             for j in range(0, i):
@@ -27,13 +26,19 @@ class InsertionSort:
                     break
 
     @staticmethod
-    def _insertion(arr):
-        """ insertion sort algorithm 2 """
-        n = len(arr)
-        for i in range(0, n):
+    def _insertion_sort(arr, n):
+        """ insertion sort algorithm """
+        for i in range(1, n):
             val = arr[i]
             hole = i
             while hole > 0 and arr[hole - 1] > val:
                 arr[hole] = arr[hole - 1]
                 hole -= 1
             arr[hole] = val
+
+
+if __name__ == '__main__':
+    a = [76766, 43, 56, 23, 6, 39, 34435, 8, 2]
+    n = len(a)
+    solver = InsertionSort(a, n)
+    print(a)

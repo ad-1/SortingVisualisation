@@ -13,13 +13,12 @@
 
 class BubbleSort:
 
-    def __init__(self, unsorted):
-        self.bubble(unsorted)
+    def __init__(self, unsorted, n):
+        self.bubble(unsorted, n)
 
     @staticmethod
-    def bubble(unsorted):
+    def bubble(unsorted, n):
         """ bubble sort algorithm """
-        n = len(unsorted)
         for i in range(0, n - 1):
             swapped = False
             for j in range(0, n - 1 - i):
@@ -31,3 +30,10 @@ class BubbleSort:
                     swapped = True
             if not swapped:
                 break
+
+
+if __name__ == '__main__':
+    a = [76766, 43, 56, 23, 6, 39, 34435, 8, 2]
+    n = len(a)
+    solver = BubbleSort(a, n)
+    print(a)

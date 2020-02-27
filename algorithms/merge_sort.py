@@ -49,3 +49,9 @@ class MergeSort:
             unsorted[k] = right[j]
             k += 1
             j += 1
+
+
+if __name__ == '__main__':
+    a = [76766, 43, 56, 23, 6, 39, 34435, 8, 2]
+    solver = MergeSort(a)
+    print(a)
