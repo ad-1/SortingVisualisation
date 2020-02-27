@@ -51,21 +51,19 @@ class Visualiser:
         for i, value in enumerate(values):
             bar = Bar(self.bar_width, i, value, self)
             self.bars[i] = bar
-            self.render_bar(bar, render_time=0)
+            self.render_bar(bar)
 
-    def render_bar(self, bar, render_time):
+    def render_bar(self, bar):
         """ draw bar on canvas """
         bar.shape = self.canvas.create_rectangle(bar.x1, 0, bar.x2, bar.value * self.y_scale, fill='#2F7AE5')
-        if render_time != 0:
-            self.root.update()
-            time.sleep(render_time)
+        self.root.update()
 
-    def update_bar(self, bar, render_time):
+    def update_bar(self, bar):
         """ update bar coordinates """
         self.canvas.coords(bar.shape, bar.x1, 0, bar.x2, bar.value * self.y_scale)
-        if render_time != 0:
-            self.root.update()
-            time.sleep(render_time)
+        self.canvas.itemconfig(bar.shape, fill='#D21F3C')
+        self.root.update()
+        self.canvas.itemconfig(bar.shape, fill='#2F7AE5')
 
     def config_menu(self):
         """ menu - user configurable settings for visualisation"""

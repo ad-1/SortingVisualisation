@@ -32,4 +32,4 @@ class Bar:
 
     def dispatch(self):
         """ dispatch updates """
-        self.subscriber.update_bar(self, render_time=0.01)
+        self.subscriber.update_bar(self)
