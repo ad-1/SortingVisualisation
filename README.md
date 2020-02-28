@@ -1,9 +1,6 @@
 # Sorting Algorithms
 
 Visualising various sorting algorithms using Python and Tkinter. Algorithms include selection sort, bubble sort, insertion sort, merge sort and quick sort.
-* GUI development in progress.
-
-(The following images are for illustrative purposes only)
 
 ## Selection Sort
 
@@ -17,7 +14,7 @@ Selection sort is an in-place comparison sorting algorithm. It has an O(n²) tim
     Stable: No
     Class: Comparison sort
 
-<img src="https://www.w3resource.com/w3r_images/selection-short.png" alt="selection sort" width="350"/>
+<img src="images/SelectionSort.gif" alt="selection sort" width="500"/>
 
 ## Bubble Sort
 
@@ -31,7 +28,7 @@ Bubble sort, sometimes referred to as sinking sort, is a simple sorting algorith
     Stable: Yes
     Class: Comparison sort
 
-<img src="https://runestone.academy/runestone/books/published/cppds/_images/bubblepass.png" alt="bubble sort" width="380"/>
+<img src="images/BubbleSort.gif" alt="bubble sort" width="500"/>
 
 ## Insertion Sort
 
@@ -45,7 +42,7 @@ Insertion sort is a simple sorting algorithm that builds the final sorted array 
     Stable: Yes
     Class: Comparison sort
 
-<img src="https://i.ytimg.com/vi/OGzPmgsI-pQ/maxresdefault.jpg" alt="insertion sort" width="450"/> 
+<img src="images/InsertionSort.gif" alt="insertion sort" width="500"/> 
 
 ## Merge Sort
 
@@ -58,7 +55,7 @@ Merge sort is an efficient, general-purpose, comparison-based sorting algorithm.
     Method: Merging
     Stable: Yes
 
-<img src="https://miro.medium.com/max/5142/1*Wb7sjviC18Hj5yRS6CdqKw.jpeg" alt="merge sort" width="400"/>
+<img src="images/MergeSort.gif" alt="merge sort" width="500"/>
 
 ## Quick Sort
 
@@ -71,5 +68,5 @@ Quicksort is an efficient sorting algorithm. Developed by British computer scien
     Stable: No
     Class: Comparison sort
     
-<img src="https://images.deepai.org/glossary-terms/a5228ea07c794b468efd1b7f758b9ead/Quicksort.png" alt="quick sort" width="400"/>
+<img src="images/QuickSort.gif" alt="quick sort" width="500"/>
 
