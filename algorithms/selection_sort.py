@@ -10,6 +10,8 @@
     part is the entire list.
 """
 
+from random import sample
+
 
 class SelectionSort:
 
@@ -39,7 +41,6 @@ class SelectionSort:
 
 
 if __name__ == '__main__':
-    a = [76766, 43, 56, 23, 6, 39, 34435, 8, 2]
-    n = len(a)
-    solver = SelectionSort(a, n)
+    a = sample(range(1000), 1000)
+    solver = SelectionSort(a, len(a))
     print(a)

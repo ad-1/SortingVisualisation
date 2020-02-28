@@ -10,6 +10,8 @@
     the way smaller or larger elements "bubble" to the top of the list.
 """
 
+from random import sample
+
 
 class BubbleSort:
 
@@ -33,7 +35,7 @@ class BubbleSort:
 
 
 if __name__ == '__main__':
-    a = [76766, 43, 56, 23, 6, 39, 34435, 8, 2]
+    a = sample(range(1000), 1000)
     n = len(a)
     solver = BubbleSort(a, n)
     print(a)

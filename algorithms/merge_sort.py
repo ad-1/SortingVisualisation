@@ -8,6 +8,8 @@
     Merge sort is a divide and conquer algorithm.
 """
 
+from random import sample
+
 
 class MergeSort:
 
@@ -52,6 +54,6 @@ class MergeSort:
 
 
 if __name__ == '__main__':
-    a = [76766, 43, 56, 23, 6, 39, 34435, 8, 2]
+    a = sample(range(1000), 1000)
     solver = MergeSort(a)
     print(a)

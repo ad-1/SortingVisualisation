@@ -8,6 +8,8 @@
     algorithms such as quicksort, heapsort, or merge sort.
 """
 
+from random import sample
+
 
 class InsertionSort:
 
@@ -38,7 +40,7 @@ class InsertionSort:
 
 
 if __name__ == '__main__':
-    a = [76766, 43, 56, 23, 6, 39, 34435, 8, 2]
+    a = sample(range(1000), 1000)
     n = len(a)
     solver = InsertionSort(a, n)
     print(a)

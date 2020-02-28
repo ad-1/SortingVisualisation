@@ -6,6 +6,8 @@
     than its main competitors, merge sort and heapsort.
 """
 
+from random import sample
+
 
 class QuickSort:
 
@@ -17,11 +19,10 @@ class QuickSort:
         """ quick sort recursive algorithm """
         if start >= end:
             return
-        n = len(unsorted)
         self.counter += 1
         i_pivot = self.partition(unsorted, start, end - 1)
         self.quick_sort(unsorted, start, i_pivot)
-        self.quick_sort(unsorted, i_pivot + 1, n)
+        self.quick_sort(unsorted, i_pivot + 1, end)
 
     @staticmethod
     def partition(unsorted, start, end):
@@ -42,7 +43,7 @@ class QuickSort:
 
 
 if __name__ == '__main__':
-    a = [76766, 43, 56, 23, 6, 39, 34435, 8, 2]
+    a = sample(range(1000), 1000)
     s, e = 0, len(a)
     solver = QuickSort(a, s, e)
     print(a)
