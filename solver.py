@@ -15,22 +15,16 @@ class Solver:
         elif solve_mode == 3:
             self.divide(unsorted, 0, n - 1)  # merge sort
         elif solve_mode == 4:
-            start, end = 0, len(unsorted)
-            self.quick_sort(unsorted, start, end)
+            self.quick_sort(unsorted, 0, n)
 
     ########################################################################
 
-    @staticmethod
-    def selection_sort(unsorted, n):
+    def selection_sort(self, unsorted, n):
         """ selection sort algorithm inplace """
         for i in range(0, n):
             a = min(unsorted[i:], key=lambda x: x.value)
             a_index = unsorted.index(a)
-            b = unsorted[i]
-            unsorted[i] = a
-            unsorted[a_index] = b
-            a.index = i  # visualise
-            b.index = a_index  # visualise
+            self.swap(unsorted, i, a_index)
 
     ########################################################################
 
@@ -49,19 +43,13 @@ class Solver:
 
     ########################################################################
 
-    @staticmethod
-    def bubble_sort(unsorted, n):
+    def bubble_sort(self, unsorted, n):
         """ bubble sort algorithm """
         for i in range(0, n - 1):
             swapped = False
             for j in range(0, n - 1 - i):
                 if unsorted[j].value > unsorted[j + 1].value:
-                    a = unsorted[j]
-                    b = unsorted[j + 1]
-                    unsorted[j] = b
-                    unsorted[j + 1] = a
-                    a.index = j + 1  # visualise
-                    b.index = j  # visualise
+                    self.swap(unsorted, j, j + 1)
                     swapped = True
             if not swapped:
                 break
@@ -99,7 +87,7 @@ class Solver:
         y = 0
         for k in range(l_lower, r_upper + 1):
             unsorted[k] = temp[y]
-            unsorted[k].index = k
+            unsorted[k].index = k  # visualise
             y += 1
 
     ########################################################################
@@ -108,26 +96,29 @@ class Solver:
         """ quick sort recursive algorithm """
         if start >= end:
             return
-        n = len(unsorted)
         self.counter += 1
         i_pivot = self.partition(unsorted, start, end - 1)
         self.quick_sort(unsorted, start, i_pivot)
-        self.quick_sort(unsorted, i_pivot + 1, n)
+        self.quick_sort(unsorted, i_pivot + 1, end)
 
-    @staticmethod
-    def partition(unsorted, start, end):
+    def partition(self, unsorted, start, end):
         """ arrange (left array < pivot) and (right array > pivot) """
         pivot = unsorted[end]
         i_pivot = start
         for i in range(start, end):
-            if unsorted[i] <= pivot:
-                v1 = unsorted[i]
-                v2 = unsorted[i_pivot]
-                unsorted[i_pivot] = v1
-                unsorted[i] = v2
+            if unsorted[i].value <= pivot.value:
+                self.swap(unsorted, i, i_pivot)
                 i_pivot += 1
-        v1 = unsorted[i_pivot]
-        unsorted[i_pivot] = pivot
-        unsorted[end] = v1
+        self.swap(unsorted, i_pivot, end)
         return i_pivot
 
+    ########################################################################
+
+    @staticmethod
+    def swap(arr, a, b):
+        """ helper function to swap elements a and b in an array """
+        arr[a].index = b  # visualise
+        arr[b].index = a  # visualise
+        temp = arr[a]
+        arr[a] = arr[b]
+        arr[b] = temp
