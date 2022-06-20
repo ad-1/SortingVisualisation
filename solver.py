@@ -5,7 +5,6 @@ class Solver:
 
     def __init__(self, unsorted, n, solve_mode, subscriber):
         self.subscriber = subscriber
-        self.counter = 0
         if solve_mode == 0:
             self.selection_sort(unsorted, n)
         elif solve_mode == 1:
@@ -22,9 +21,15 @@ class Solver:
     def selection_sort(self, unsorted, n):
         """ selection sort algorithm inplace """
         for i in range(0, n):
-            a = min(unsorted[i:], key=lambda x: x.value)
-            a_index = unsorted.index(a)
-            self.swap(unsorted, i, a_index)
+            # current_min = min(unsorted[i:], key=lambda x: x.value)
+            # a_index = unsorted.index(a)
+            current_min = unsorted[i]
+            min_index = i
+            for j in range(i, n):
+                if unsorted[j] < current_min:
+                    current_min = unsorted[j]
+                    min_index = j
+            self.swap(unsorted, i, min_index)
 
     ########################################################################
 
@@ -36,10 +41,10 @@ class Solver:
             hole = i
             while hole > 0 and unsorted[hole - 1].value > val:
                 unsorted[hole].value = unsorted[hole - 1].value
-                unsorted[hole].index = hole  # visualise
+                unsorted[hole].index = hole  # set index to trigger dispatch
                 hole -= 1
             unsorted[hole].value = val
-            unsorted[hole].index = hole  # visualise
+            unsorted[hole].index = hole  # set index to trigger dispatch
 
     ########################################################################
 
@@ -54,11 +59,11 @@ class Solver:
             if not swapped:
                 break
 
-    ########################################################################
+    # ==============================================================
+    # Merge Sort Algorithm
 
     def divide(self, unsorted, lower, upper):
         """ recrusive function to divide array into 2 sub arrays for sorting """
-        self.counter += 1
         if upper <= lower:
             return
         mid = (lower + upper) // 2
@@ -84,19 +89,18 @@ class Solver:
         while j <= r_upper:
             temp.append(unsorted[j])
             j += 1
-        y = 0
-        for k in range(l_lower, r_upper + 1):
-            unsorted[k] = temp[y]
-            unsorted[k].index = k  # visualise
-            y += 1
 
-    ########################################################################
+        for y, k in enumerate(range(l_lower, r_upper + 1)):
+            unsorted[k] = temp[y]
+            unsorted[k].index = k  # set index to trigger dispatch
+
+    # ==============================================================
+    # Quick Sort Algorithm
 
     def quick_sort(self, unsorted, start, end):
         """ quick sort recursive algorithm """
         if start >= end:
             return
-        self.counter += 1
         i_pivot = self.partition(unsorted, start, end - 1)
         self.quick_sort(unsorted, start, i_pivot)
         self.quick_sort(unsorted, i_pivot + 1, end)
@@ -117,8 +121,8 @@ class Solver:
     @staticmethod
     def swap(arr, a, b):
         """ helper function to swap elements a and b in an array """
-        arr[a].index = b  # visualise
-        arr[b].index = a  # visualise
+        arr[a].index = b  # set index to trigger dispatch
+        arr[b].index = a  # set index to trigger dispatch
         temp = arr[a]
         arr[a] = arr[b]
         arr[b] = temp

@@ -31,7 +31,7 @@ class SelectionSort:
 
     @staticmethod
     def _selection_sort(unsorted, n):
-        """ selection sort algorithm inplsace """
+        """ selection sort algorithm inplace """
         for i in range(0, n):
             min_ = min(unsorted[i:])
             min_index = unsorted.index(min_)
